@@ -394,7 +394,6 @@ class PluginsController extends EventEmitter {
         wallet: ethereumProvider,
         console, // Adding console for now for logging purposes.
         BigInt,
-        setTimeout,
         crypto,
         SubtleCrypto,
         fetch,
@@ -405,7 +404,9 @@ class PluginsController extends EventEmitter {
 
         // Timers. TODO: Must constrain or remove for production.
         setTimeout,
+        clearTimeout,
         setInterval,
+        clearInterval,
 
         // Typed Arrays:
         Int8Array,
@@ -420,17 +421,29 @@ class PluginsController extends EventEmitter {
         BigInt64Array,
         BigUint64Array,
 
+        // Other ethers.js requirements:
+        MessageChannel,
+        atob,
+        btoa,
+        define,
+
         window: {
+          wallet: ethereumProvider,
+          console, // Adding console for now for logging purposes.
+          BigInt,
           crypto,
           SubtleCrypto,
-          setTimeout,
           fetch,
           XMLHttpRequest,
           WebSocket,
+          Buffer,
+          Date,
 
           // Timers. TODO: Must constrain or remove for production.
           setTimeout,
+          clearTimeout,
           setInterval,
+          clearInterval,
 
           // Typed Arrays:
           Int8Array,
@@ -444,7 +457,13 @@ class PluginsController extends EventEmitter {
           Float64Array,
           BigInt64Array,
           BigUint64Array,
-        },
+
+          // Other ethers.js requirements:
+          MessageChannel,
+          atob,
+          btoa,
+          define,
+       },
       })
       sessedPlugin()
     } catch (err) {
